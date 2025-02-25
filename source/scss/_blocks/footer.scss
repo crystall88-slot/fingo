@@ -1,0 +1,37 @@
+.footer {
+  display: flex;
+  justify-content: space-evenly;
+  padding-top: 40px;
+}
+
+.footer__content {
+  // width: 400px;
+  display: flex;
+  flex-direction: column;
+}
+
+.footer__title {
+  font-size: 30px;
+  color: #152D47;
+  margin-left: 32px;
+}
+
+.footer__list {
+  // width: 340px;
+  height: 400px;
+  display: flex;
+  flex-direction: column;
+  flex-wrap: wrap;
+}
+
+.footer__list-item {
+  display: flex;
+  flex-direction: column;
+  justify-content: space-evenly;
+  width: 180px;
+  height: 140px;
+}
+
+.footer__img {
+  width: 400px;
+}
