@@ -7,7 +7,7 @@
   "main": "gulpfile.js",
   "scripts": {
     "build": "gulp build",
-    "start": "gulp serve",
+   "start": "gulp build & gulp serve & \"C:\\Program Files\\Google\\Chrome\\Application\\chrome.exe\" http://localhost:3000",
     "lint:editorconfig": "editorconfig-checker",
     "lint:stylelint": "stylelint \"source/scss/**/*.scss,css,sss,sass\" --custom-syntax postcss-scss",
     "test": "npm run lint:editorconfig && npm run lint:stylelint",
