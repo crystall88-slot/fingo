@@ -159,7 +159,8 @@ document.addEventListener("DOMContentLoaded", function () {
   creditButton.addEventListener("click", function () {
       showCalculator(creditCalculator);
   });
-
+         7         
+         
   mortgageButton.addEventListener("click", function () {
       showCalculator(mortgageCalculator);
   });
