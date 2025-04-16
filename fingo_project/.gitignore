@@ -1,45 +1,56 @@
-# Виртуальное окружение
-venv/
-env/
-.venv/
+# Игнорировать зависимости (если используете Node.js/npm)
+node_modules/
+package-lock.json
 
-# Файлы Python
-__pycache__/
-*.pyc
-*.pyo
-*.pyd
-.Python
-*.egg-info/
+# Игнорировать временные файлы и сборки
 dist/
 build/
-
-
-# Статические файлы, собранные Django (если вы используете collectstatic)
-staticfiles/
-
-# Логи и временные файлы
+out/
 *.log
-*.pot
-*.pid
-*.seed
-*.swp
-
-# Файлы редакторов и IDE
-.vscode/
-.idea/
-*.sublime-project
-*.sublime-workspace
-
-# Локальные настройки
-local_settings.py
-.env
-
-# Миграции (опционально, если не хотите коммитить миграции)
-fingo/migrations/*
-!fingo/migrations/__init__.py
-
-# Прочие временные файлы
-*.bak
 *.tmp
+
+# Игнорировать файлы настроек IDE
+.idea/
+*.sublime-workspace
+*.sublime-project
+.vscode/
+
+# Игнорировать системные файлы
 .DS_Store
 Thumbs.db
+
+# Игнорировать файлы конфигурации окружения
+.env
+*.env
+
+# Игнорировать сгенерированные файлы
+*.min.css
+*.xaiArtifact
+
+# Игнорировать резервные копии
+*~
+*.backup
+*.bak
+
+# Игнорировать файлы локальной базы данных SQLite
+*.db
+*.sqlite
+*.db-journal
+*.db-shm
+*.db-wal
+
+# Игнорировать файлы тестирования
+coverage/
+test-results/
+
+# Игнорировать файлы кэша
+.cache/
+
+# Игнорировать файлы сборщиков
+.parcel-cache/
+vite.config.ts
+
+# Игнорировать возможные большие директории (проверьте их наличие)
+vendor/
+public/build/
+tmp/
