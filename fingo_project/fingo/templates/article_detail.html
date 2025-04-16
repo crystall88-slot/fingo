@@ -1,0 +1,11 @@
+{% extends 'base.html' %}
+
+{% block content %}
+    <section class="articles container">
+        <div class="article-list">
+            <h2>{{ article.title }}</h2>
+            <p>Автор: {{ article.author.username }} | {{ article.created_at|date:"d.m.Y H:i" }}</p>
+            <p>{{ article.content }}</p>
+        </div>
+    </section>
+{% endblock %}

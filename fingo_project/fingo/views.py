@@ -1,7 +1,7 @@
 from django.shortcuts import render, redirect
 from django.contrib.auth import login, authenticate, logout
 from django.contrib import messages
-from .models import RegisterForm, LoginForm
+from .models import RegisterForm, LoginForm, Article
 
 def calculator_view(request):
     return render(request, 'calculator.html')
@@ -9,8 +9,28 @@ def calculator_view(request):
 def index_view(request):
     return render(request, 'index.html')
 
-def article_view(request):
-    return render(request, 'article.html')
+def article_list_view(request):
+    articles = Article.objects.all().order_by('-created_at')
+    return render(request, 'article.html', {'articles': articles})
+
+def article_create_view(request):
+    if not request.user.is_authenticated:
+        return redirect('login')
+    
+    if request.method == 'POST':
+        title = request.POST.get('title')
+        content = request.POST.get('content')
+        if title and content:
+            Article.objects.create(title=title, content=content, author=request.user)
+            messages.success(request, 'Статья успешно создана!')
+            return redirect('article')
+        else:
+            messages.error(request, 'Заполните все поля.')
+    return render(request, 'article_create.html')
+
+def article_detail_view(request, article_id):
+    article = Article.objects.get(id=article_id)
+    return render(request, 'article_detail.html', {'article': article})
 
 def about_view(request):
     return render(request, 'about.html')

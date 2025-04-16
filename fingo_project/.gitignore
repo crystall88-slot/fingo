@@ -13,8 +13,6 @@ __pycache__/
 dist/
 build/
 
-# Файлы базы данных
-db.sqlite3
 
 # Статические файлы, собранные Django (если вы используете collectstatic)
 staticfiles/

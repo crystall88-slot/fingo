@@ -4,11 +4,22 @@
     <section class="articles container">
         <div class="article-list">
             <h2>Статьи</h2>
-            <p>Здесь будут отображаться статьи. Пока раздел находится в разработке.</p>
+            {% if articles %}
+                {% for article in articles %}
+                    <article>
+                        <h3><a href="{% url 'article_detail' article.id %}">{{ article.title }}</a></h3>
+                        <p>Автор: {{ article.author.username }} | {{ article.created_at|date:"d.m.Y H:i" }}</p>
+                        <p>{{ article.content|truncatewords:20 }}</p>
+                    </article>
+                {% endfor %}
+            {% else %}
+                <p>Пока статей нет. Будьте первым!</p>
+            {% endif %}
+            {% if user.is_authenticated %}
+                <a href="{% url 'article_create' %}" class="submit auth-btn">Написать статью</a>
+            {% else %}
+                <p>Войдите, чтобы писать статьи.</p>
+            {% endif %}
         </div>
     </section>
 {% endblock %}
-
-{% comment %} {% block scripts %}
-    <script src="{% static 'js/calculator.js' %}"></script>
-{% endblock %} {% endcomment %}

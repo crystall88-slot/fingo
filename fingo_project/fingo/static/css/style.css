@@ -1,4 +1,4 @@
-/* Базовые стили (из base.css) */
+/* Базовые стили */
 html {
   box-sizing: border-box;
   text-size-adjust: none;
@@ -31,14 +31,14 @@ a {
   text-decoration: none;
 }
 
-/* Контейнер (из container.css) */
+/* Контейнер */
 .container {
   position: relative;
   margin: 0 auto;
   max-width: 1200px;
 }
 
-/* Шапка (из header.css) */
+/* Шапка */
 .header {
   background-color: #000000;
 }
@@ -79,7 +79,7 @@ a {
   opacity: 30%;
 }
 
-/* Футер (из footer.css) */
+/* Футер */
 .footer {
   display: flex;
   justify-content: space-around;
@@ -116,7 +116,120 @@ a {
   width: 400px;
 }
 
-/* Калькулятор (из calculator.css) */
+/* Слайдер */
+.slider {
+  font-family: "Fira Sans", Arial, sans-serif;
+  margin: 0 auto;
+}
+
+.slider__wrapper {
+  overflow: hidden;
+}
+
+.slider__inner-wrapper {
+  display: flex;
+  height: 100%;
+  transition: transform;
+}
+
+.slider__slide {
+  display: flex;
+  flex-shrink: 0;
+  align-items: center;
+  justify-content: center;
+  width: max-content;
+  height: 665px;
+  font-size: 24px;
+  color: #fff;
+}
+
+.slider__slide:nth-child(4n + 1) {
+  background-color: #0099ff;
+}
+
+.slider__slide:nth-child(4n + 2) {
+  background-color: #45cb85;
+}
+
+.slider__slide:nth-child(4n + 3) {
+  background-color: #f79824;
+}
+
+.slider__slide:nth-child(4n + 4) {
+  background-color: #dc143c;
+}
+
+.slider__bottom-panel {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  position: absolute;
+  width: 100%;
+  top: 75%;
+  transform: translateY(-50%);
+  padding: 0 20px;
+  z-index: 2;
+  margin-top: 0;
+}
+
+.slider__button {
+  width: 45px;
+  height: 45px;
+  border: 2px solid #000;
+  border-radius: 50%;
+  background-color: transparent;
+  font-size: 20px;
+  transition: all 0.5s;
+}
+
+.slider__button:not(:disabled):hover,
+.slider__button:not(:disabled):focus {
+  cursor: pointer;
+  background-color: #000;
+  color: #fff;
+}
+
+.slider__button:disabled {
+  opacity: 0.4;
+  pointer-events: none;
+  user-select: none;
+}
+
+.slider__dot {
+  width: 10px;
+  height: 10px;
+  border: none;
+  padding: 0;
+  border-radius: 50%;
+  outline: none;
+  cursor: pointer;
+  transition: background-color 0.4s;
+}
+
+.slider__dot:not(:last-child) {
+  margin-right: 5px;
+}
+
+.slider__dot_active {
+  background-color: #000;
+}
+
+.slider__dot:not(.slider__dot_active):hover,
+.slider__dot:not(.slider__dot_active):focus {
+  background-color: gray;
+}
+
+.swiper {
+  width: 500px;
+  height: 300px;
+}
+
+.swiper-button-prev,
+.swiper-button-next {
+  color: #000000;
+}
+
+/* Калькулятор */
 .calculator__buttons {
   margin-right: auto;
   margin-top: 20px;
@@ -382,401 +495,497 @@ button.submit {
   margin-top: 20px;
 }
 
-.fingo__animation {
-  margin: 0 auto;
-  overflow: hidden;
-  display: flex;
+/* About Calc */
+.about-calc {
+  padding: 40px 0;
+  background-color: #fff;
+  border-radius: 10px;
+  margin: 20px auto;
+  box-shadow: 0 4px 10px rgba(0, 0, 0, 0.1);
+  animation: fadeIn 1s ease-in;
 }
 
-.fingo__animation > * {
-  flex: 0 0 100%;
-}
-
-.fingo__animation-group {
-  display: flex;
-  justify-content: center;
-  align-items: center;
-  gap: 120px;
-  will-change: transform;
-  animation: scrolling 10s linear infinite;
-  padding-right: 120px;
-}
-
-@keyframes scrolling {
-  0% {
-      transform: translateX(0);
-  }
-  100% {
-      transform: translateX(-100%);
-  }
-}
-
-.fingo__animation-img--sber {
-  width: 250px;
-  height: 80px;
-}
-
-.fingo__animation-img--alfa {
-  width: 180px;
-  height: 130px;
-}
-
-.fingo__animation-img--tbank {
-  width: 250px;
-  height: 100px;
-}
-
-.fingo__animation-img--paypal {
-  width: 250px;
-  height: 55px;
-}
-
-.fingo__animation-img--ozon {
-  width: 250px;
-  height: 120px;
-}
-
-.fingo__animation-img--usabank {
-  width: 250px;
-  height: 110px;
-}
-
-/* Слайдер (из style.css) */
-.slider {
-  font-family: "Fira Sans", Arial, sans-serif;
-  margin: 0 auto;
-}
-
-.slider__wrapper {
-  overflow: hidden;
-}
-
-.slider__inner-wrapper {
-  display: flex;
-  height: 100%;
-  transition: transform;
-}
-
-.slider__slide {
-  display: flex;
-  flex-shrink: 0;
-  align-items: center;
-  justify-content: center;
-  width: max-content;
-  height: 665px;
-  font-size: 24px;
-  color: #fff;
-}
-
-.slider__slide:nth-child(4n + 1) {
-  background-color: #0099ff;
-}
-
-.slider__slide:nth-child(4n + 2) {
-  background-color: #45cb85;
-}
-
-.slider__slide:nth-child(4n + 3) {
-  background-color: #f79824;
-}
-
-.slider__slide:nth-child(4n + 4) {
-  background-color: #dc143c;
-}
-
-.slider__bottom-panel {
-  display: flex;
-  align-items: center;
-  justify-content: space-between;
-  position: absolute;
-  width: 100%;
-  top: 75%;
-  transform: translateY(-50%);
-  padding: 0 20px;
-  z-index: 2;
-  margin-top: 0;
-}
-
-.slider__button {
-  width: 45px;
-  height: 45px;
-  border: 2px solid #000;
-  border-radius: 50%;
-  background-color: transparent;
-  font-size: 20px;
-  transition: all 0.5s;
-}
-
-.slider__button:not(:disabled):hover,
-.slider__button:not(:disabled):focus {
-  cursor: pointer;
-  background-color: #000;
-  color: #fff;
-}
-
-.slider__button:disabled {
-  opacity: 0.4;
-  pointer-events: none;
-  user-select: none;
-}
-
-.slider__dot {
-  width: 10px;
-  height: 10px;
-  border: none;
-  padding: 0;
-  border-radius: 50%;
-  outline: none;
-  cursor: pointer;
-  transition: background-color 0.4s;
-}
-
-.slider__dot:not(:last-child) {
-  margin-right: 5px;
-}
-
-.slider__dot_active {
-  background-color: #000;
-}
-
-.slider__dot:not(.slider__dot_active):hover,
-.slider__dot:not(.slider__dot_active):focus {
-  background-color: gray;
-}
-
-.swiper {
-  width: 500px;
-  height: 300px;
-}
-
-.swiper-button-prev,
-.swiper-button-next {
-  color: #000000;
+.about-calc__title {
+  font-size: 1.8rem;
+  color: #152D47;
+  text-align: center;
+  margin-bottom: 30px;
 }
 
 .about-calc__list {
   display: flex;
-  flex-direction: column;
+  justify-content: space-around;
+  flex-wrap: wrap;
+  gap: 20px;
 }
 
 .about-calc__list-item {
-  display: flex;
-  flex-direction: column;
+  flex: 1;
+  min-width: 250px;
+  text-align: center;
+  padding: 20px;
+  background-color: #f9f9f9;
+  border-radius: 8px;
+  transition: transform 0.3s ease;
 }
 
-.about-calc__list-item--group {
-  display: flex;
-  align-items: center;
-  column-gap: 10px;
+.about-calc__list-item:hover {
+  transform: translateY(-5px);
+  box-shadow: 0 5px 15px rgba(0, 0, 0, 0.1);
+}
+
+.about-calc__list-item--group svg {
+  fill: #0099ff;
+}
+
+.about-calc__list-item--span {
+  font-size: 1.2rem;
+  font-weight: 600;
+  color: #152D47;
+  margin-top: 10px;
 }
 
 .about-calc__list-item--text {
-  margin-left: 35px;
+  font-size: 0.9rem;
+  color: #666;
+  margin-top: 10px;
 }
 
 .about-calc__line {
-  height: 1px;
+  height: 2px;
   background-color: #152D47;
+  margin: 30px auto;
+  width: 80%;
 }
 
+/* Total */
 .total {
-  width: 1000px;
-  margin: 0 auto;
+  padding: 40px 0;
+  background-color: #fff;
+  border-radius: 10px;
+  margin: 20px auto;
+  box-shadow: 0 4px 10px rgba(0, 0, 0, 0.1);
+  animation: fadeIn 1s ease-in;
 }
 
 .total__title {
-  font-size: 30px;
+  font-size: 1.8rem;
   font-weight: 700;
   color: #152D47;
-  margin-left: 40px;
+  text-align: center;
+  margin-bottom: 30px;
 }
 
 .total__list {
   display: flex;
   flex-direction: column;
-  flex-wrap: wrap;
+  align-items: center;
+  gap: 20px;
 }
 
 .total__list-item {
   display: flex;
   align-items: center;
-  height: 130px;
-  column-gap: 25px;
+  width: 90%;
+  max-width: 800px;
+  padding: 15px;
+  background-color: #f9f9f9;
+  border-radius: 8px;
+  transition: transform 0.3s ease;
+}
+
+.total__list-item:hover {
+  transform: translateY(-5px);
+  box-shadow: 0 5px 15px rgba(0, 0, 0, 0.1);
 }
 
 .total__list-item--block-first {
-  width: 130px;
-  height: 70px;
+  width: 100px;
+  height: 60px;
   background-color: #152D47;
-  border-radius: 10px;
+  border-radius: 5px;
 }
 
 .total__list-item--block-second {
-  width: 300px;
-  height: 70px;
+  width: 200px;
+  height: 60px;
   background-color: #152D47;
-  border-radius: 10px;
+  border-radius: 5px;
 }
 
 .total__list-item--block-third {
-  width: 500px;
-  height: 70px;
+  width: 400px;
+  height: 60px;
   background-color: #152D47;
-  border-radius: 10px;
+  border-radius: 5px;
 }
 
 .total__list-item--span {
-  font-size: 21px;
+  font-size: 1.1rem;
   font-weight: 600;
+  margin-left: 20px;
 }
 
 .total__list-item--text {
-  font-size: 17px;
-  font-weight: 500;
+  font-size: 0.9rem;
   color: #383838;
+  margin-left: 20px;
 }
 
 .total__line {
-  height: 1px;
+  height: 2px;
   background-color: #152D47;
-  margin-top: 30px;
+  margin: 30px auto;
+  width: 80%;
 }
 
-/* Минимальные стили для статей (article.css был пустым) */
-.articles {
-  padding: 2rem;
+/* Новый блок - Преимущества */
+.advantages {
+  padding: 40px 0;
+  background-color: #e5e7eb;
+  border-radius: 10px;
+  margin: 20px auto;
+  animation: fadeIn 1s ease-in;
 }
 
-.article-list h2 {
-  font-size: 1.5rem;
-  color: #333;
-}
-
-.article-list p {
-  color: #666;
-}
-
-/* Минимальные стили для профиля (profile.css был пустым) */
-/* Общие стили для секций */
-/* Общие стили для секций */
-.auth-section {
-  padding: 60px 0;
-  background-color: #f4f7fa;
-  min-height: 100vh;
-  display: flex;
-  justify-content: center;
-  align-items: center;
-}
-
-/* Карточка для форм */
-.auth-card {
-  background-color: #ffffff;
-  border-radius: 15px;
-  box-shadow: 0 8px 20px rgba(0, 0, 0, 0.1);
-  max-width: 500px;
-  width: 100%;
-  padding: 40px;
-  text-align: center;
-}
-
-/* Заголовок */
-.auth-title {
-  font-size: 2rem;
+.advantages__title {
+  font-size: 1.8rem;
   color: #152D47;
-  margin-bottom: 20px;
+  text-align: center;
+  margin-bottom: 30px;
 }
 
-/* Форма */
-.auth-form {
+.advantages__list {
   display: flex;
-  flex-direction: column;
+  justify-content: space-around;
+  flex-wrap: wrap;
   gap: 20px;
 }
 
-.form-group {
-  display: flex;
-  flex-direction: column;
-  text-align: left;
+.advantages__item {
+  flex: 1;
+  min-width: 250px;
+  text-align: center;
+  padding: 20px;
+  background-color: #fff;
+  border-radius: 8px;
+  box-shadow: 0 4px 10px rgba(0, 0, 0, 0.1);
+  transition: transform 0.3s ease;
 }
 
-.form-group label {
+.advantages__item:hover {
+  transform: translateY(-5px);
+  box-shadow: 0 6px 20px rgba(0, 0, 0, 0.15);
+}
+
+.advantages__icon {
+  font-size: 2rem;
+  color: #0099ff;
+  margin-bottom: 10px;
+}
+
+.advantages__text {
   font-size: 1rem;
+  color: #666;
+}
+
+/* Новый блок - Отзывы */
+.reviews {
+  padding: 40px 0;
+  background-color: #fff;
+  border-radius: 10px;
+  margin: 20px auto;
+  box-shadow: 0 4px 10px rgba(0, 0, 0, 0.1);
+  animation: fadeIn 1s ease-in;
+}
+
+.reviews__title {
+  font-size: 1.8rem;
   color: #152D47;
-  margin-bottom: 5px;
-  font-weight: 600;
+  text-align: center;
+  margin-bottom: 30px;
 }
 
-.form-group input {
-  padding: 12px;
-  font-size: 1rem;
-  border: 1px solid #ddd;
+.reviews__list {
+  display: flex;
+  justify-content: space-around;
+  flex-wrap: wrap;
+  gap: 20px;
+}
+
+.reviews__item {
+  flex: 1;
+  min-width: 300px;
+  padding: 20px;
+  background-color: #f9f9f9;
   border-radius: 8px;
-  transition: border-color 0.3s ease, box-shadow 0.3s ease;
+  transition: transform 0.3s ease;
 }
 
-.form-group input:focus {
-  border-color: #152D47;
-  box-shadow: 0 0 8px rgba(21, 45, 71, 0.2);
-  outline: none;
+.reviews__item:hover {
+  transform: translateY(-5px);
+  box-shadow: 0 5px 15px rgba(0, 0, 0, 0.1);
 }
 
-/* Ошибки формы */
-.form-error {
-  color: #ff4d4d;
-  font-size: 0.85rem;
-  margin-top: 5px;
+.reviews__text {
+  font-size: 0.9rem;
+  color: #666;
+  margin-bottom: 10px;
 }
 
-/* Кнопка */
-.submit.auth-btn {
-  background-color: #152D47;
-  color: white;
-  padding: 12px 30px;
-  border: none;
-  border-radius: 8px;
-  font-size: 1rem;
+.reviews__author {
   font-weight: 600;
-  cursor: pointer;
-  transition: background-color 0.3s ease, transform 0.3s ease;
+  color: #152D47;
+  text-align: right;
 }
 
-.submit.auth-btn:hover {
-  background-color: #1a3c5a;
-  transform: translateY(-2px);
+/* Новый блок - Новости */
+.news {
+  padding: 40px 0;
+  background-color: #e5e7eb;
+  border-radius: 10px;
+  margin: 20px auto;
+  animation: fadeIn 1s ease-in;
 }
 
-/* Ссылка */
-.auth-link {
-  margin-top: 20px;
+.news__title {
+  font-size: 1.8rem;
+  color: #152D47;
+  text-align: center;
+  margin-bottom: 30px;
+}
+
+.news__list {
+  display: flex;
+  justify-content: space-around;
+  flex-wrap: wrap;
+  gap: 20px;
+}
+
+.news__item {
+  flex: 1;
+  min-width: 250px;
+  padding: 20px;
+  background-color: #fff;
+  border-radius: 8px;
+  box-shadow: 0 4px 10px rgba(0, 0, 0, 0.1);
+  transition: transform 0.3s ease;
+}
+
+.news__item:hover {
+  transform: translateY(-5px);
+  box-shadow: 0 6px 20px rgba(0, 0, 0, 0.15);
+}
+
+.news__title-item {
+  font-size: 1.2rem;
+  color: #152D47;
+  margin-bottom: 10px;
+}
+
+.news__text {
   font-size: 0.9rem;
   color: #666;
 }
 
-.auth-link a {
-  color: #152D47;
-  text-decoration: none;
-  font-weight: 600;
-  transition: color 0.3s ease;
+/* Анимации */
+@keyframes fadeIn {
+  from { opacity: 0; }
+  to { opacity: 1; }
 }
 
-.auth-link a:hover {
-  color: #1a3c5a;
-  text-decoration: underline;
+@keyframes fadeInUp {
+  from { opacity: 0; transform: translateY(20px); }
+  to { opacity: 1; transform: translateY(0); }
 }
 
-/* Сообщения */
-.messages {
-  list-style: none;
-  padding: 0;
-  margin: 0 0 20px 0;
+/* Адаптивность */
+@media (max-width: 768px) {
+  .header__list {
+    flex-direction: column;
+    height: auto;
+    padding: 10px 0;
+    width: 90%;
+  }
+  .header__list-item {
+    margin: 5px 0;
+    width: 100%;
+    text-align: center;
+  }
+  .footer {
+    flex-direction: column;
+    align-items: center;
+    padding: 20px 0;
+  }
+  .footer__title {
+    font-size: 24px;
+    margin-left: 0;
+    text-align: center;
+  }
+  .footer__list {
+    height: auto;
+    flex-direction: row;
+    justify-content: center;
+    gap: 20px;
+  }
+  .footer__list-item {
+    width: 150px;
+    height: 120px;
+  }
+  .footer__img {
+    width: 300px;
+  }
+  .slider {
+    height: 300px;
+  }
+  .slider__slide {
+    height: 300px;
+    font-size: 18px;
+  }
+  .slider__bottom-panel {
+    top: 80%;
+  }
+  .calculator__buttons {
+    width: 280px;
+    height: 50px;
+  }
+  .calculator__button {
+    width: 90px;
+    height: 40px;
+  }
+  .deposit, .mb-4, .loan-container, .mortgage-widget {
+    padding: 16px;
+    width: 90%;
+  }
+  .buttons {
+    flex-direction: column;
+  }
+  .buttons button, .duration-btn {
+    width: 100%;
+    margin-bottom: 8px;
+  }
+  .offer, .loan-offer, .widget-summary {
+    padding: 12px;
+  }
+  .about-calc__list, .total__list, .advantages__list, .reviews__list, .news__list {
+    flex-direction: column;
+    align-items: center;
+  }
+  .about-calc__list-item, .advantages__item, .news__item, .reviews__item {
+    min-width: 100%;
+    margin-bottom: 15px;
+  }
+  .total__list-item {
+    width: 100%;
+  }
+  .articles {
+    padding: 1rem;
+    width: 90%;
+  }
+  .article-list article {
+    margin-bottom: 10px;
+  }
+  .auth-section {
+    padding: 30px 0;
+  }
+  .auth-card {
+    padding: 20px;
+    width: 85%;
+  }
+  .auth-title {
+    font-size: 1.5rem;
+  }
+  .form-group input {
+    padding: 8px;
+  }
+  .submit.auth-btn {
+    padding: 8px 20px;
+  }
 }
 
-.messages .success {
-  color: #28a745;
-  font-size: 0.9rem;
-}
-
-.messages .error {
-  color: #ff4d4d;
-  font-size: 0.9rem;
+@media (max-width: 480px) {
+  .header__list {
+    width: 100%;
+    padding: 5px 0;
+  }
+  .header__list-item--link {
+    font-size: 16px;
+  }
+  .footer__title {
+    font-size: 20px;
+  }
+  .footer__list {
+    flex-direction: column;
+    align-items: center;
+  }
+  .footer__list-item {
+    width: 120px;
+    height: 100px;
+  }
+  .footer__img {
+    width: 200px;
+  }
+  .slider {
+    height: 200px;
+  }
+  .slider__slide {
+    height: 200px;
+    font-size: 14px;
+  }
+  .slider__bottom-panel {
+    top: 85%;
+  }
+  .calculator__buttons {
+    width: 240px;
+    height: 40px;
+    flex-direction: column;
+    padding: 5px;
+  }
+  .calculator__button {
+    width: 80px;
+    height: 30px;
+    margin: 5px 0;
+  }
+  .deposit, .mb-4, .loan-container, .mortgage-widget {
+    padding: 12px;
+    width: 95%;
+  }
+  .buttons button, .duration-btn {
+    padding: 8px;
+  }
+  .offer, .loan-offer, .widget-summary {
+    padding: 8px;
+  }
+  .offer div, .loan-offer div, .widget-summary div {
+    flex-direction: column;
+    text-align: center;
+  }
+  .about-calc__title, .total__title, .advantages__title, .reviews__title, .news__title {
+    font-size: 1.5rem;
+  }
+  .about-calc__list-item--span, .total__list-item--span {
+    font-size: 1rem;
+  }
+  .news__title-item {
+    font-size: 1rem;
+  }
+  .articles {
+    padding: 0.5rem;
+  }
+  .article-list h2 {
+    font-size: 1.2rem;
+  }
+  .article-list h3 {
+    font-size: 1rem;
+  }
+  .auth-title {
+    font-size: 1.2rem;
+  }
+  .form-group label {
+    font-size: 0.9rem;
+  }
+  .submit.auth-btn {
+    padding: 6px 15px;
+    font-size: 0.9rem;
+  }
 }
