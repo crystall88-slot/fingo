@@ -1,0 +1,114 @@
+{% extends 'base.html' %}
+{% load static %}
+
+{% block content %}
+    <div class="slider">
+        <div class="slider__wrapper">
+            <div class="slider__inner-wrapper">
+                <div class="slider__slide">
+                    <div class="banner">
+                        <h1 class="banner__title">Fingo - ваш финансовый помощник</h1>
+                        <p class="banner__text">Получите доступ к лучшим кредитным и ипотечным предложениям онлайн.</p>
+                        <div class="banner__buttons">
+                            <button class="banner__button">Расчитать кредит</button>
+                            <button class="banner__button">Расчитать ипотеку</button>
+                        </div>
+                    </div>
+                </div>
+                <div class="slider__slide">
+                    <div class="banner">
+                        <h1 class="banner__title">Экономьте время и деньги с Fingo</h1>
+                        <p class="banner__text">Сравните предложения разных банков в одном месте. Получите лучшие условия по кредиту или ипотеке</p>
+                        <button class="banner__button">Начать сравнение</button>
+                    </div>
+                </div>
+                <div class="slider__slide">
+                    <div class="banner">
+                        <h1 class="banner__title">Мечтаете о своем доме? Мы поможем</h1>
+                        <p class="banner__text">Рассчитайте ипотеку по вашим параметрам, найдите лучшие ставки и начните свой путь к новой жизни.</p>
+                        <button class="banner__buttons">Расчитать ипотеку</button>
+                    </div>
+                </div>
+                <div class="slider__slide">
+                    <div class="banner">
+                        <h1 class="banner__title">Кредит на любые цели</h1>
+                        <p class="banner__text">Нужны деньги на ремонт, отпуск или покупку авто? Финго поможет найти вариант кредита.</p>
+                        <button class="banner__button">Расчитать кредит</button>
+                    </div>
+                </div>
+            </div>
+        </div>
+        <div class="slider__bottom-panel">
+            <button class="slider__button slider__button-back_js">←</button>
+            <div class="slider__pagination slider__pagination_js"></div>
+            <button class="slider__button slider__button-next_js">→</button>
+        </div>
+    </div>
+
+    <section class="about-calc container">
+        <h2 class="about-calc__title">Воспользуйтесь персональным калькулятором</h2>
+        <ul class="about-calc__list">
+            <li class="about-calc__list-item">
+                <div class="about-calc__list-item--group">
+                    <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="#0099ff" stroke="#0099ff" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="feather feather-droplet">
+                        <path d="M12 2.69l5.66 5.66a8 8 0 1 1-11.31 0z"></path>
+                    </svg>
+                    <span class="about-calc__list-item--span">Рассчитать</span>
+                </div>
+                <p class="about-calc__list-item--text">Введите желаемую сумму кредита и срок.</p>
+            </li>
+            <li class="about-calc__list-item">
+                <div class="about-calc__list-item--group">
+                    <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="#0099ff" stroke="#0099ff" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="feather feather-droplet">
+                        <path d="M12 2.69l5.66 5.66a8 8 0 1 1-11.31 0z"></path>
+                    </svg>
+                    <span class="about-calc__list-item--span">Проанализировать</span>
+                </div>
+                <p class="about-calc__list-item--text">Узнайте ежемесячный платеж и полную стоимость кредита.</p>
+            </li>
+            <li class="about-calc__list-item">
+                <div class="about-calc__list-item--group">
+                    <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="#0099ff" stroke="#0099ff" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="feather feather-droplet">
+                        <path d="M12 2.69l5.66 5.66a8 8 0 1 1-11.31 0z"></path>
+                    </svg>
+                    <span class="about-calc__list-item--span">Принять решение</span>
+                </div>
+                <p class="about-calc__list-item--text">Примите обоснованное решение о кредитовании.</p>
+            </li>
+        </ul>
+        <img src="" alt="" class="about-calc__img">
+        <div class="about-calc__line container"></div>
+    </section>
+
+    <section class="total">
+        <h3 class="total__title">Узнайте полную стоимость кредита.</h3>
+        <ul class="total__list">
+            <li class="total__list-item">
+                <div class="total__list-item--block-first"></div>
+                <div class="total__list-div">
+                    <span class="total__list-item--span">Проценты</span>
+                    <p class="total__list-item--text">Узнайте, сколько вы заплатите за пользование кредитом.</p>
+                </div>
+            </li>
+            <li class="total__list-item">
+                <div class="total__list-item--block-second"></div>
+                <div class="total__list-div">
+                    <span class="total__list-item--span">Комиссии</span>
+                    <p class="total__list-item--text">Изучите возможные дополнительные комиссии.</p>
+                </div>
+            </li>
+            <li class="total__list-item">
+                <div class="total__list-item--block-third"></div>
+                <div class="total__list-div">
+                    <span class="total__list-item--span">Полная стоимость</span>
+                    <p class="total__list-item--text">Получите полную информацию о стоимости кредита.</p>
+                </div>
+            </li>
+        </ul>
+        <div class="total__line container"></div>
+    </section>
+{% endblock %}
+
+{% block scripts %}
+    <script src="{% static 'js/slider.js' %}"></script>
+{% endblock %}

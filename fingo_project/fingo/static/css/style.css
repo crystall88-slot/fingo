@@ -1,0 +1,782 @@
+/* Базовые стили (из base.css) */
+html {
+  box-sizing: border-box;
+  text-size-adjust: none;
+  -webkit-tap-highlight-color: transparent;
+}
+
+*,
+*:before,
+*:after {
+  box-sizing: inherit;
+}
+
+html,
+body {
+  background-color: #f4f4f4;
+  color: #333;
+  font-family: Arial, sans-serif;
+  height: 100%;
+  margin: 0;
+  min-height: 100%;
+  -webkit-font-smoothing: antialiased;
+  -moz-osx-font-smoothing: grayscale;
+}
+
+li {
+  list-style-type: none;
+}
+
+a {
+  text-decoration: none;
+}
+
+/* Контейнер (из container.css) */
+.container {
+  position: relative;
+  margin: 0 auto;
+  max-width: 1200px;
+}
+
+/* Шапка (из header.css) */
+.header {
+  background-color: #000000;
+}
+
+.header__list {
+  width: 1180px;
+  height: 100px;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  column-gap: 25px;
+  margin: 0 auto;
+}
+
+.header__list-item:hover {
+  opacity: 60%;
+}
+
+.header__list-item:active {
+  opacity: 30%;
+}
+
+.header__list-item--link {
+  color: #ffffff;
+  font-size: 18px;
+  font-weight: 600;
+}
+
+.header__list-item--article {
+  margin-left: auto;
+}
+
+.header__list-item--calc:hover {
+  opacity: 60%;
+}
+
+.header__list-item--calc:active {
+  opacity: 30%;
+}
+
+/* Футер (из footer.css) */
+.footer {
+  display: flex;
+  justify-content: space-around;
+  padding-top: 40px;
+}
+
+.footer__content {
+  display: flex;
+  flex-direction: column;
+}
+
+.footer__title {
+  font-size: 30px;
+  color: #152D47;
+  margin-left: 32px;
+}
+
+.footer__list {
+  height: 400px;
+  display: flex;
+  flex-direction: column;
+  flex-wrap: wrap;
+}
+
+.footer__list-item {
+  display: flex;
+  flex-direction: column;
+  justify-content: space-evenly;
+  width: 180px;
+  height: 140px;
+}
+
+.footer__img {
+  width: 400px;
+}
+
+/* Калькулятор (из calculator.css) */
+.calculator__buttons {
+  margin-right: auto;
+  margin-top: 20px;
+  display: flex;
+  justify-content: space-around;
+  align-items: center;
+  width: 330px;
+  height: 62px;
+  background-color: #e5e7eb;
+  border-radius: 35px;
+}
+
+.calculator__button {
+  width: 100px;
+  height: 50px;
+  border: solid transparent;
+  border-radius: 35px;
+  background-color: transparent;
+  transition: all 0.3s ease;
+}
+
+.calculator__button.active:after {
+  opacity: 1;
+}
+
+.selected {
+  border-color: #000000;
+  background-color: #000000;
+  color: #ffffff;
+}
+
+.deposit {
+  margin-top: 20px;
+  background: #ffffff;
+  padding: 24px;
+  border-radius: 10px;
+  box-shadow: 0 5px 10px rgba(0, 0, 0, 0.1);
+}
+
+.mb-4 {
+  margin: 0 auto;
+  background: #ffffff;
+  padding: 24px;
+  border-radius: 10px;
+  box-shadow: 0 5px 10px rgba(0, 0, 0, 0.1);
+}
+
+label {
+  font-weight: bold;
+  display: block;
+  margin-bottom: 8px;
+}
+
+input[type="range"] {
+  -webkit-appearance: none;
+  width: 100%;
+  height: 8px;
+  background: #ddd;
+  border-radius: 5px;
+}
+
+input[type="range"]::-webkit-slider-thumb {
+  -webkit-appearance: none;
+  width: 17px;
+  height: 17px;
+  background: #152D47;
+  border-radius: 50%;
+  cursor: pointer;
+}
+
+input[type="range"]::-moz-range-thumb {
+  width: 20px;
+  height: 20px;
+  background: #152D47;
+  border-radius: 50%;
+  cursor: pointer;
+}
+
+.buttons {
+  display: flex;
+  gap: 8px;
+}
+
+.buttons button {
+  flex: 1;
+  padding: 10px;
+  border: none;
+  border-radius: 4px;
+  background-color: #e5e7eb;
+  cursor: pointer;
+}
+
+.duration-btn {
+  flex: 1;
+  padding: 10px;
+  border: 1px solid transparent;
+  border-radius: 4px;
+  background-color: #e5e7eb;
+  cursor: pointer;
+}
+
+.buttons button.active {
+  background-color: #152D47;
+  color: white;
+}
+
+.offer {
+  background: #e5e7eb;
+  padding: 16px;
+  border-radius: 8px;
+  margin-top: 20px;
+}
+
+.offer div {
+  display: flex;
+  justify-content: space-between;
+  margin-bottom: 8px;
+}
+
+button.submit {
+  width: 100%;
+  padding: 12px;
+  border: none;
+  border-radius: 4px;
+  background-color: #152D47;
+  color: white;
+  font-weight: bold;
+  cursor: pointer;
+  margin-top: 20px;
+}
+
+/* Калькулятор кредита */
+.loan-container {
+  margin: 0 auto;
+  background: #ffffff;
+  padding: 24px;
+  border-radius: 10px;
+  box-shadow: 0 5px 10px rgba(0, 0, 0, 0.1);
+  display: none;
+}
+
+.loan-title {
+  font-size: 26px;
+  margin-bottom: 20px;
+  color: #333;
+}
+
+.loan-input-group {
+  margin-bottom: 18px;
+}
+
+.loan-label {
+  font-weight: bold;
+  display: block;
+  margin-bottom: 10px;
+  color: #444;
+}
+
+.loan-slider {
+  width: 100%;
+}
+
+.loan-output {
+  display: flex;
+  justify-content: space-between;
+  margin-top: 8px;
+  font-size: 14px;
+  color: #666666;
+}
+
+.loan-offer {
+  background: #e5e7eb;
+  padding: 20px;
+  border-radius: 8px;
+  margin-top: 20px;
+}
+
+.loan-offer div {
+  display: flex;
+  justify-content: space-between;
+  margin-bottom: 10px;
+  font-size: 16px;
+  color: #555;
+}
+
+.loan-submit {
+  width: 100%;
+  padding: 14px;
+  border: none;
+  border-radius: 5px;
+  background-color: #152D47;
+  color: white;
+  font-weight: bold;
+  cursor: pointer;
+  font-size: 16px;
+  margin-top: 20px;
+}
+
+/* Калькулятор ипотеки */
+.mortgage-widget {
+  margin: 0 auto;
+  background: #ffffff;
+  padding: 24px;
+  border-radius: 10px;
+  box-shadow: 0 5px 10px rgba(0, 0, 0, 0.1);
+  display: none;
+}
+
+.widget-title {
+  font-size: 26px;
+  margin-bottom: 20px;
+  color: #333;
+}
+
+.widget-input-group {
+  margin-bottom: 18px;
+}
+
+.widget-label {
+  font-weight: bold;
+  display: block;
+  margin-bottom: 10px;
+  color: #444;
+}
+
+.widget-slider {
+  width: 100%;
+}
+
+.widget-output {
+  display: flex;
+  justify-content: space-between;
+  margin-top: 8px;
+  font-size: 14px;
+  color: #666;
+}
+
+.widget-summary {
+  background: #e5e7eb;
+  padding: 20px;
+  border-radius: 8px;
+  margin-top: 20px;
+}
+
+.widget-summary div {
+  display: flex;
+  justify-content: space-between;
+  margin-bottom: 10px;
+  font-size: 16px;
+  color: #555;
+}
+
+.widget-submit {
+  width: 100%;
+  padding: 14px;
+  border: none;
+  border-radius: 5px;
+  background-color: #152D47;
+  color: white;
+  font-weight: bold;
+  cursor: pointer;
+  font-size: 16px;
+  margin-top: 20px;
+}
+
+.fingo__animation {
+  margin: 0 auto;
+  overflow: hidden;
+  display: flex;
+}
+
+.fingo__animation > * {
+  flex: 0 0 100%;
+}
+
+.fingo__animation-group {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  gap: 120px;
+  will-change: transform;
+  animation: scrolling 10s linear infinite;
+  padding-right: 120px;
+}
+
+@keyframes scrolling {
+  0% {
+      transform: translateX(0);
+  }
+  100% {
+      transform: translateX(-100%);
+  }
+}
+
+.fingo__animation-img--sber {
+  width: 250px;
+  height: 80px;
+}
+
+.fingo__animation-img--alfa {
+  width: 180px;
+  height: 130px;
+}
+
+.fingo__animation-img--tbank {
+  width: 250px;
+  height: 100px;
+}
+
+.fingo__animation-img--paypal {
+  width: 250px;
+  height: 55px;
+}
+
+.fingo__animation-img--ozon {
+  width: 250px;
+  height: 120px;
+}
+
+.fingo__animation-img--usabank {
+  width: 250px;
+  height: 110px;
+}
+
+/* Слайдер (из style.css) */
+.slider {
+  font-family: "Fira Sans", Arial, sans-serif;
+  margin: 0 auto;
+}
+
+.slider__wrapper {
+  overflow: hidden;
+}
+
+.slider__inner-wrapper {
+  display: flex;
+  height: 100%;
+  transition: transform;
+}
+
+.slider__slide {
+  display: flex;
+  flex-shrink: 0;
+  align-items: center;
+  justify-content: center;
+  width: max-content;
+  height: 665px;
+  font-size: 24px;
+  color: #fff;
+}
+
+.slider__slide:nth-child(4n + 1) {
+  background-color: #0099ff;
+}
+
+.slider__slide:nth-child(4n + 2) {
+  background-color: #45cb85;
+}
+
+.slider__slide:nth-child(4n + 3) {
+  background-color: #f79824;
+}
+
+.slider__slide:nth-child(4n + 4) {
+  background-color: #dc143c;
+}
+
+.slider__bottom-panel {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  position: absolute;
+  width: 100%;
+  top: 75%;
+  transform: translateY(-50%);
+  padding: 0 20px;
+  z-index: 2;
+  margin-top: 0;
+}
+
+.slider__button {
+  width: 45px;
+  height: 45px;
+  border: 2px solid #000;
+  border-radius: 50%;
+  background-color: transparent;
+  font-size: 20px;
+  transition: all 0.5s;
+}
+
+.slider__button:not(:disabled):hover,
+.slider__button:not(:disabled):focus {
+  cursor: pointer;
+  background-color: #000;
+  color: #fff;
+}
+
+.slider__button:disabled {
+  opacity: 0.4;
+  pointer-events: none;
+  user-select: none;
+}
+
+.slider__dot {
+  width: 10px;
+  height: 10px;
+  border: none;
+  padding: 0;
+  border-radius: 50%;
+  outline: none;
+  cursor: pointer;
+  transition: background-color 0.4s;
+}
+
+.slider__dot:not(:last-child) {
+  margin-right: 5px;
+}
+
+.slider__dot_active {
+  background-color: #000;
+}
+
+.slider__dot:not(.slider__dot_active):hover,
+.slider__dot:not(.slider__dot_active):focus {
+  background-color: gray;
+}
+
+.swiper {
+  width: 500px;
+  height: 300px;
+}
+
+.swiper-button-prev,
+.swiper-button-next {
+  color: #000000;
+}
+
+.about-calc__list {
+  display: flex;
+  flex-direction: column;
+}
+
+.about-calc__list-item {
+  display: flex;
+  flex-direction: column;
+}
+
+.about-calc__list-item--group {
+  display: flex;
+  align-items: center;
+  column-gap: 10px;
+}
+
+.about-calc__list-item--text {
+  margin-left: 35px;
+}
+
+.about-calc__line {
+  height: 1px;
+  background-color: #152D47;
+}
+
+.total {
+  width: 1000px;
+  margin: 0 auto;
+}
+
+.total__title {
+  font-size: 30px;
+  font-weight: 700;
+  color: #152D47;
+  margin-left: 40px;
+}
+
+.total__list {
+  display: flex;
+  flex-direction: column;
+  flex-wrap: wrap;
+}
+
+.total__list-item {
+  display: flex;
+  align-items: center;
+  height: 130px;
+  column-gap: 25px;
+}
+
+.total__list-item--block-first {
+  width: 130px;
+  height: 70px;
+  background-color: #152D47;
+  border-radius: 10px;
+}
+
+.total__list-item--block-second {
+  width: 300px;
+  height: 70px;
+  background-color: #152D47;
+  border-radius: 10px;
+}
+
+.total__list-item--block-third {
+  width: 500px;
+  height: 70px;
+  background-color: #152D47;
+  border-radius: 10px;
+}
+
+.total__list-item--span {
+  font-size: 21px;
+  font-weight: 600;
+}
+
+.total__list-item--text {
+  font-size: 17px;
+  font-weight: 500;
+  color: #383838;
+}
+
+.total__line {
+  height: 1px;
+  background-color: #152D47;
+  margin-top: 30px;
+}
+
+/* Минимальные стили для статей (article.css был пустым) */
+.articles {
+  padding: 2rem;
+}
+
+.article-list h2 {
+  font-size: 1.5rem;
+  color: #333;
+}
+
+.article-list p {
+  color: #666;
+}
+
+/* Минимальные стили для профиля (profile.css был пустым) */
+/* Общие стили для секций */
+/* Общие стили для секций */
+.auth-section {
+  padding: 60px 0;
+  background-color: #f4f7fa;
+  min-height: 100vh;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+
+/* Карточка для форм */
+.auth-card {
+  background-color: #ffffff;
+  border-radius: 15px;
+  box-shadow: 0 8px 20px rgba(0, 0, 0, 0.1);
+  max-width: 500px;
+  width: 100%;
+  padding: 40px;
+  text-align: center;
+}
+
+/* Заголовок */
+.auth-title {
+  font-size: 2rem;
+  color: #152D47;
+  margin-bottom: 20px;
+}
+
+/* Форма */
+.auth-form {
+  display: flex;
+  flex-direction: column;
+  gap: 20px;
+}
+
+.form-group {
+  display: flex;
+  flex-direction: column;
+  text-align: left;
+}
+
+.form-group label {
+  font-size: 1rem;
+  color: #152D47;
+  margin-bottom: 5px;
+  font-weight: 600;
+}
+
+.form-group input {
+  padding: 12px;
+  font-size: 1rem;
+  border: 1px solid #ddd;
+  border-radius: 8px;
+  transition: border-color 0.3s ease, box-shadow 0.3s ease;
+}
+
+.form-group input:focus {
+  border-color: #152D47;
+  box-shadow: 0 0 8px rgba(21, 45, 71, 0.2);
+  outline: none;
+}
+
+/* Ошибки формы */
+.form-error {
+  color: #ff4d4d;
+  font-size: 0.85rem;
+  margin-top: 5px;
+}
+
+/* Кнопка */
+.submit.auth-btn {
+  background-color: #152D47;
+  color: white;
+  padding: 12px 30px;
+  border: none;
+  border-radius: 8px;
+  font-size: 1rem;
+  font-weight: 600;
+  cursor: pointer;
+  transition: background-color 0.3s ease, transform 0.3s ease;
+}
+
+.submit.auth-btn:hover {
+  background-color: #1a3c5a;
+  transform: translateY(-2px);
+}
+
+/* Ссылка */
+.auth-link {
+  margin-top: 20px;
+  font-size: 0.9rem;
+  color: #666;
+}
+
+.auth-link a {
+  color: #152D47;
+  text-decoration: none;
+  font-weight: 600;
+  transition: color 0.3s ease;
+}
+
+.auth-link a:hover {
+  color: #1a3c5a;
+  text-decoration: underline;
+}
+
+/* Сообщения */
+.messages {
+  list-style: none;
+  padding: 0;
+  margin: 0 0 20px 0;
+}
+
+.messages .success {
+  color: #28a745;
+  font-size: 0.9rem;
+}
+
+.messages .error {
+  color: #ff4d4d;
+  font-size: 0.9rem;
+}
