@@ -1,0 +1,34 @@
+{% extends 'base.html' %}
+{% load static %}
+
+{% block content %}
+    <section class="auth-section">
+        <div class="auth-card">
+            <h2 class="auth-title">Создать статью</h2>
+            {% if messages %}
+                {% for message in messages %}
+                    <div class="messages {{ message.tags }}">{{ message }}</div>
+                {% endfor %}
+            {% endif %}
+            <form class="auth-form" method="post">
+                {% csrf_token %}
+                <div class="form-group">
+                    <label for="title">Заголовок</label>
+                    <input type="text" name="title" id="title" required>
+                </div>
+                <div class="form-group">
+                    <label for="content">Текст статьи</label>
+                    <textarea name="content" id="content" rows="10" required></textarea>
+                </div>
+                <button type="submit" class="submit auth-btn">Создать</button>
+            </form>
+        </div>
+    </section>
+{% endblock %}
+{% block scripts %}
+    <script src="{% static 'js/script.js' %}"></script>
+{% endblock %}
+
+{% block footer %}
+    <!-- Оставляем пустым, чтобы футер не отображался -->
+{% endblock %}

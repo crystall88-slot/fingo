@@ -1,0 +1,25 @@
+{% load static %}
+
+<header class="header">
+    <div class="header__container">
+        <a href="/" class="header__logo">FinGo</a>
+        <button class="header__burger" aria-label="Открыть/закрыть меню">
+            <span class="header__burger-line"></span>
+            <span class="header__burger-line"></span>
+            <span class="header__burger-line"></span>
+        </button>
+        <nav class="header__nav">
+            <ul class="header__list">
+                <li class="header__list-item">
+                    <a href="{% url 'article' %}" class="header__list-item--link">Статьи</a>
+                </li>
+                <li class="header__list-item">
+                    <a href="{% url 'calculator' %}" class="header__list-item--link">Калькулятор</a>
+                </li>
+                <li class="header__list-item header__list-item--article">
+                    <a href="{% url 'profile' %}" class="header__list-item--link">Профиль</a>
+                </li>
+            </ul>
+        </nav>
+    </div>
+</header>
