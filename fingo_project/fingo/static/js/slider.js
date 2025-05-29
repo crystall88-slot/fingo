@@ -1,93 +1,79 @@
-(function() {
-  const slider = document.querySelector('.slider');
-  const wrapper = slider.querySelector('.slider__wrapper');
-  const innerWrapper = wrapper.querySelector('.slider__inner-wrapper');
-  const slides = [...innerWrapper.querySelectorAll('.slider__slide')];
-  const buttonBack = slider.querySelector('.slider__button-back_js');
-  const buttonNext = slider.querySelector('.slider__button-next_js');
-  const pagination = slider.querySelector('.slider__pagination_js');
-  const slidesCount = slides.length;
-  const ANIMATION_DURATION = 500;
+document.addEventListener('DOMContentLoaded', () => {
+    const sliderWrapper = document.querySelector('.slider__inner-wrapper');
+    const slides = document.querySelectorAll('.slider__slide');
+    const totalSlides = slides.length;
+    const pagination = document.querySelector('.slider__pagination_js');
+    const btnPrev = document.querySelector('.slider__button-back_js');
+    const btnNext = document.querySelector('.slider__button-next_js');
 
-  let siledWidth = wrapper.offsetWidth;
-  let activeSlideIndex = 0;
-  let timer;
-  let dots = [];
+    let currentIndex = 0;
+    let touchStartX = 0;
+    let touchEndX = 0;
+    const swipeThreshold = 50; // Минимальное расстояние для свайпа (в пикселях)
 
-  initWidth();
-  createDots();
-  setActiveSlide(0);
+    // Создаём точки для пагинации
+    for (let i = 0; i < totalSlides; i++) {
+        const dot = document.createElement('button');
+        dot.classList.add('slider__dot');
+        if (i === 0) dot.classList.add('slider__dot_active');
+        dot.addEventListener('click', () => goToSlide(i));
+        pagination.appendChild(dot);
+    }
 
-  window.addEventListener('resize', () => {
-      initWidth();
-      setActiveSlide(activeSlideIndex);
-  })
+    const dots = document.querySelectorAll('.slider__dot');
 
-  buttonBack.addEventListener('click', () => {
-      setActiveSlide(activeSlideIndex - 1);
-  })
+    // Функция перехода к слайду
+    function goToSlide(index) {
+        currentIndex = index;
+        if (currentIndex >= totalSlides) currentIndex = 0;
+        if (currentIndex < 0) currentIndex = totalSlides - 1;
 
-  buttonNext.addEventListener('click', () => {
-      setActiveSlide(activeSlideIndex + 1);
-  })
+        sliderWrapper.style.transform = `translateX(-${currentIndex * 100}%)`;
 
+        // Обновляем активную точку
+        dots.forEach((dot, i) => {
+            dot.classList.toggle('slider__dot_active', i === currentIndex);
+        });
+    }
 
-  function setActiveSlide(index, withAnimation = true) {
-      if ( index < 0 || index >= slidesCount ) return;
+    // Кнопка "Назад"
+    btnPrev.addEventListener('click', () => {
+        goToSlide(currentIndex - 1);
+    });
 
-      innerWrapper.style.transform = `translateX(${index * siledWidth * (-1)}px)`;
+    // Кнопка "Вперёд"
+    btnNext.addEventListener('click', () => {
+        goToSlide(currentIndex + 1);
+    });
 
-      buttonBack.removeAttribute('disabled');
-      buttonNext.removeAttribute('disabled');
+    // Обработка сенсорных событий для свайпа
+    sliderWrapper.addEventListener('touchstart', (e) => {
+        touchStartX = e.touches[0].clientX; // Запоминаем начальную позицию касания
+    });
 
-      if (withAnimation) {
-          clearTimeout(timer);
-          innerWrapper.style.transition = `transform ${ANIMATION_DURATION}ms`;
-          timer = setTimeout = (() => {
-              innerWrapper.style.transition = '';
-          }, ANIMATION_DURATION);
-      }
+    sliderWrapper.addEventListener('touchmove', (e) => {
+        touchEndX = e.touches[0].clientX; // Отслеживаем движение пальца
+    });
 
-      if ( index === 0 ) {
-          buttonBack.setAttribute('disabled', 'disabled');
-      }
+    sliderWrapper.addEventListener('touchend', () => {
+        const swipeDistance = touchEndX - touchStartX;
 
-      if ( index === slidesCount - 1 ) {
-          buttonNext.setAttribute('disabled', 'disabled');
-      }
+        // Если свайп вправо (больше 50px), переключаем на предыдущий слайд
+        if (swipeDistance > swipeThreshold) {
+            goToSlide(currentIndex - 1);
+        }
+        // Если свайп влево (меньше -50px), переключаем на следующий слайд
+        else if (swipeDistance < -swipeThreshold) {
+            goToSlide(currentIndex + 1);
+        }
 
-      dots[activeSlideIndex].classList.remove('slider__dot_active');
-      dots[index].classList.add('slider__dot_active');
-      activeSlideIndex = index;
-  }
+        // Сбрасываем значения
+        touchStartX = 0;
+        touchEndX = 0;
+    });
 
-  function initWidth() {
-      siledWidth = wrapper.offsetWidth;
-
-      slides.forEach(slide => {
-          slide.style.width = `${siledWidth}px`;
-      })
-  }
-
-  function createDots() {
-      for ( let i = 0; i < slidesCount; i++ ) {
-          const dot = createDot(i);
-          dots.push(dot);
-          pagination.insertAdjacentElement('beforeend', dot);
-      }
-  }
-
-  function createDot(index) {
-      const dot = document.createElement('button');
-      dot.classList.add('slider__dot');
-
-      if ( index === activeSlideIndex ) {
-          dot.classList.add('slider__dot_active');
-      }
-
-      dot.addEventListener('click', () => {
-          setActiveSlide(index);
-      })
-      return dot;
-  }
-})();
+    // Автопрокрутка (опционально)
+    setInterval(() => {
+        goToSlide(currentIndex + 1);
+    }, 5000);
+});

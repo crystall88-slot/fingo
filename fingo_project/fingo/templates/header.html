@@ -1,22 +1,25 @@
 {% load static %}
+
 <header class="header">
-    <ul class="header__list container">
-        <li class="header__list-item">
-            <a href="{% url 'index' %}" class="header__list-item--link">ФинGo</a>
-        </li>
-        <li class="header__list-item--article">
-            <a href="{% url 'article' %}" class="header__list-item--link">Статьи</a>
-        </li>
-        <li class="header__list-item--calc">
-            <a href="{% url 'calculator' %}" class="header__list-item--link">Калькулятор</a>
-        </li>
-        {% comment %} <li class="header__list-item">
-            <a href="{% url 'about' %}" class="header__list-item--link">О нас</a>
-        </li> {% endcomment %}
-        <li class="header__list-item">
-            <a href="{% url 'profile' %}" class="header__list-item--link">
-                <img class="header__list-item--link-img" src="{% static 'img/profile.png' %}" alt="profile" width="30" height="30">
-            </a>
-        </li>
-    </ul>
+    <div class="header__container">
+        <a href="/" class="header__logo">FinGo</a>
+        <button class="header__burger" aria-label="Открыть/закрыть меню">
+            <span class="header__burger-line"></span>
+            <span class="header__burger-line"></span>
+            <span class="header__burger-line"></span>
+        </button>
+        <nav class="header__nav">
+            <ul class="header__list">
+                <li class="header__list-item">
+                    <a href="{% url 'article' %}" class="header__list-item--link">Статьи</a>
+                </li>
+                <li class="header__list-item">
+                    <a href="{% url 'calculator' %}" class="header__list-item--link">Калькулятор</a>
+                </li>
+                <li class="header__list-item header__list-item--article">
+                    <a href="{% url 'profile' %}" class="header__list-item--link">Профиль</a>
+                </li>
+            </ul>
+        </nav>
+    </div>
 </header>

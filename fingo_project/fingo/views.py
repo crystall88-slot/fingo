@@ -1,7 +1,7 @@
 from django.shortcuts import render, redirect
-from django.contrib.auth import login, authenticate, logout
+from django.contrib.auth import login, authenticate, logout, update_session_auth_hash
 from django.contrib import messages
-from .models import RegisterForm, LoginForm, Article
+from .models import RegisterForm, LoginForm, Article, Comment
 
 def calculator_view(request):
     return render(request, 'calculator.html')
@@ -30,7 +30,19 @@ def article_create_view(request):
 
 def article_detail_view(request, article_id):
     article = Article.objects.get(id=article_id)
-    return render(request, 'article_detail.html', {'article': article})
+    comments = article.comments.all().order_by('-created_at')
+    if request.method == 'POST':
+        if not request.user.is_authenticated:
+            messages.error(request, 'Войдите, чтобы оставить комментарий.')
+            return redirect('login')
+        content = request.POST.get('content')
+        if content:
+            Comment.objects.create(article=article, author=request.user, content=content)
+            messages.success(request, 'Комментарий добавлен!')
+            return redirect('article_detail', article_id=article_id)
+        else:
+            messages.error(request, 'Комментарий не может быть пустым.')
+    return render(request, 'article_detail.html', {'article': article, 'comments': comments})
 
 def about_view(request):
     return render(request, 'about.html')
@@ -44,8 +56,17 @@ def profile_view(request):
         user.first_name = request.POST.get('first_name', '')
         user.last_name = request.POST.get('last_name', '')
         user.email = request.POST.get('email', '')
-        user.save()
-        messages.success(request, 'Данные профиля успешно обновлены!')
+
+        new_password = request.POST.get('password', '')
+        if new_password:
+            user.set_password(new_password)
+            user.save()
+            update_session_auth_hash(request, user)
+            messages.success(request, 'Пароль успешно обновлён.')
+        else:
+            user.save()
+            messages.success(request, 'Данные профиля успешно обновлены!')
+
         return redirect('profile')
 
     return render(request, 'profile.html')

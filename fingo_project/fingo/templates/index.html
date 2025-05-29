@@ -10,30 +10,30 @@
                         <h1 class="banner__title">Fingo - ваш финансовый помощник</h1>
                         <p class="banner__text">Получите доступ к лучшим кредитным и ипотечным предложениям онлайн.</p>
                         <div class="banner__buttons">
-                            <button class="banner__button">Расчитать кредит</button>
-                            <button class="banner__button">Расчитать ипотеку</button>
+                            <a  href="{% url 'calculator' %}" class="banner__button">Расчитать кредит</a>
+                            <a  href="{% url 'calculator' %}" class="banner__button">Расчитать ипотеку</a>
                         </div>
                     </div>
                 </div>
-                <div class="slider__slide">
+                {% comment %} <div class="slider__slide">
                     <div class="banner">
                         <h1 class="banner__title">Экономьте время и деньги с Fingo</h1>
                         <p class="banner__text">Сравните предложения разных банков в одном месте.</p>
-                        <button class="banner__button">Начать сравнение</button>
+                        <a class="banner__button">Начать сравнение</a>
                     </div>
-                </div>
+                </div> {% endcomment %}
                 <div class="slider__slide">
                     <div class="banner">
                         <h1 class="banner__title">Мечтаете о своем доме?</h1>
                         <p class="banner__text">Рассчитайте ипотеку по вашим параметрам.</p>
-                        <button class="banner__button">Расчитать ипотеку</button>
+                        <a  href="{% url 'calculator' %}" class="banner__button">Расчитать ипотеку</a>
                     </div>
                 </div>
                 <div class="slider__slide">
                     <div class="banner">
                         <h1 class="banner__title">Кредит на любые цели</h1>
                         <p class="banner__text">Нужны деньги на ремонт или отпуск?</p>
-                        <button class="banner__button">Расчитать кредит</button>
+                        <a  href="{% url 'calculator' %}" class="banner__button">Расчитать кредит</a>
                     </div>
                 </div>
             </div>
@@ -66,7 +66,7 @@
                 </div>
                 <p class="about-calc__list-item--text">Узнайте ежемесячный платеж.</p>
             </li>
-            <li class="about-calc__list-item">
+            {% comment %} <li class="about-calc__list-item">
                 <div class="about-calc__list-item--group">
                     <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="#0099ff" stroke="#0099ff" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="feather feather-droplet">
                         <path d="M12 2.69l5.66 5.66a8 8 0 1 1-11.31 0z"></path>
@@ -74,12 +74,12 @@
                     <span class="about-calc__list-item--span">Принять решение</span>
                 </div>
                 <p class="about-calc__list-item--text">Выберите лучший вариант.</p>
-            </li>
+            </li> {% endcomment %}
         </ul>
         <div class="about-calc__line"></div>
     </section>
 
-    <section class="total container">
+    {% comment %} <section class="total container">
         <h3 class="total__title">Узнайте полную стоимость кредита</h3>
         <ul class="total__list">
             <li class="total__list-item">
@@ -105,9 +105,9 @@
             </li>
         </ul>
         <div class="total__line"></div>
-    </section>
+    </section> {% endcomment %}
 
-    <section class="advantages container">
+    {% comment %} <section class="advantages container">
         <h2 class="advantages__title">Преимущества Fingo</h2>
         <ul class="advantages__list">
             <li class="advantages__item">
@@ -123,9 +123,9 @@
                 <p class="advantages__text">Экономия времени</p>
             </li>
         </ul>
-    </section>
+    </section> {% endcomment %}
 
-    <section class="reviews container">
+    {% comment %} <section class="reviews container">
         <h2 class="reviews__title">Что говорят наши клиенты</h2>
         <ul class="reviews__list">
             <li class="reviews__item">
@@ -137,8 +137,8 @@
                 <p class="reviews__author">Мария К.</p>
             </li>
         </ul>
-    </section>
-
+    </section> {% endcomment %}
+{% comment %} 
     <section class="news container">
         <h2 class="news__title">Новости и акции</h2>
         <ul class="news__list">
@@ -150,10 +150,11 @@
                 <h3 class="news__title-item">Обновление калькулятора</h3>
                 <p class="news__text">Добавлены новые банки в список.</p>
             </li>
-        </ul>
+        </ul> {% endcomment %}
     </section>
 {% endblock %}
 
 {% block scripts %}
+    <script src="{% static 'js/script.js' %}"></script>
     <script src="{% static 'js/slider.js' %}"></script>
 {% endblock %}

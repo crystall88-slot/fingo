@@ -1,25 +1,64 @@
 {% extends 'base.html' %}
+{% load static %}
 
 {% block content %}
     <section class="articles container">
         <div class="article-list">
-            <h2>Статьи</h2>
+            <div style="display: flex; justify-content: space-between; align-items: center; margin-bottom: 30px;">
+                <h2>Статьи</h2>
+                {% if user.is_authenticated %}
+                    <a href="{% url 'article_create' %}" class="submit auth-btn" style="margin: 0;">Написать статью</a>
+                {% else %}
+                    <p style="margin: 0;">Войдите, чтобы писать статьи.</p>
+                {% endif %}
+            </div>
             {% if articles %}
                 {% for article in articles %}
-                    <article>
+                    <article class="article-item" data-expanded="false" data-article-id="{{ article.id }}">
                         <h3><a href="{% url 'article_detail' article.id %}">{{ article.title }}</a></h3>
                         <p>Автор: {{ article.author.username }} | {{ article.created_at|date:"d.m.Y H:i" }}</p>
-                        <p>{{ article.content|truncatewords:20 }}</p>
+                        <div class="article-content">
+                            <div class="article-summary">{{ article.content|safe|truncatewords:20 }}</div>
+                            <div class="article-full" style="display: none;">{{ article.content|safe }}</div>
+                            <div class="article-buttons">
+                                <button class="toggle-btn" data-article-id="{{ article.id }}">Ещё</button>
+                            </div>
+                        </div>
                     </article>
                 {% endfor %}
             {% else %}
                 <p>Пока статей нет. Будьте первым!</p>
             {% endif %}
-            {% if user.is_authenticated %}
-                <a href="{% url 'article_create' %}" class="submit auth-btn">Написать статью</a>
-            {% else %}
-                <p>Войдите, чтобы писать статьи.</p>
-            {% endif %}
         </div>
     </section>
+
+    <script>
+        document.querySelectorAll('.toggle-btn').forEach(button => {
+            button.addEventListener('click', function() {
+                const articleId = this.getAttribute('data-article-id');
+                const article = document.querySelector(`.article-item[data-article-id="${articleId}"]`);
+                const summary = article.querySelector('.article-summary');
+                const full = article.querySelector('.article-full');
+
+                if (article.getAttribute('data-expanded') === 'false') {
+                    full.style.display = 'block';
+                    summary.style.maxHeight = 'none';
+                    this.textContent = 'Свернуть';
+                    article.setAttribute('data-expanded', 'true');
+                } else {
+                    full.style.display = 'none';
+                    summary.style.maxHeight = '4.5em';
+                    this.textContent = 'Ещё';
+                    article.setAttribute('data-expanded', 'false');
+                }
+            });
+        });
+    </script>
+{% endblock %}
+{% block scripts %}
+    <script src="{% static 'js/script.js' %}"></script>
+{% endblock %}
+
+{% block footer %}
+    <!-- Оставляем пустым, чтобы футер не отображался -->
 {% endblock %}

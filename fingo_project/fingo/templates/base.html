@@ -1,73 +1,27 @@
 {% load static %}
 <!DOCTYPE html>
-<html lang="en" class="no-js">
+<html lang="ru">
 <head>
-    <meta charset="utf-8">
-    <meta name="viewport" content="width=device-width">
-    <meta name="google" content="notranslate">
-    <meta name="format-detection" content="telephone=no">
-
-    <title>Фин Go</title>
-    <meta name="description" content="">
-    <meta name="keywords" content="">
-
-    <script>
-      var docElement = document.documentElement;
-      docElement.className = docElement.className.replace(/\bno-js\b/, '') + ' js';
-    </script>
-
-    <!-- Подключение стилей -->
-    <link href="{% static 'css/style.css' %}" rel="stylesheet">
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>{% block title %}FinGo{% endblock %}</title>
+    <link rel="stylesheet" href="{% static 'css/style.css' %}">
 </head>
 <body>
-    <!-- Шапка -->
     {% include 'header.html' %}
 
-    <!-- Основной контент -->
-    <main class="content">
+    <main>
         {% block content %}
         {% endblock %}
     </main>
 
-    <!-- Футер -->
-    {% include 'footer.html' %}
+    {% block footer %}
+        {% include 'footer.html' %}
+    {% endblock %}
 
-    <!-- Подключение скриптов -->
     {% block scripts %}
     {% endblock %}
 
-    <!-- Скрипт Cloudflare -->
-    <script>
-        (function(){
-            function c(){
-                var b = a.contentDocument || a.contentWindow.document;
-                if(b){
-                    var d = b.createElement('script');
-                    d.innerHTML = "window.__CF$cv$params={r:'931306b3ca4cbffa',t:'MTc0NDc5OTYyNC4wMDAwMDA='};var a=document.createElement('script');a.nonce='';a.src='/cdn-cgi/challenge-platform/scripts/jsd/main.js';document.getElementsByTagName('head')[0].appendChild(a);";
-                    b.getElementsByTagName('head')[0].appendChild(d);
-                }
-            }
-            if(document.body){
-                var a = document.createElement('iframe');
-                a.height = 1;
-                a.width = 1;
-                a.style.position = 'absolute';
-                a.style.top = 0;
-                a.style.left = 0;
-                a.style.border = 'none';
-                a.style.visibility = 'hidden';
-                document.body.appendChild(a);
-                if('loading' !== document.readyState) c();
-                else if(window.addEventListener) document.addEventListener('DOMContentLoaded', c);
-                else {
-                    var e = document.onreadystatechange || function(){};
-                    document.onreadystatechange = function(b){
-                        e(b);
-                        'loading' !== document.readyState && (document.onreadystatechange = e, c());
-                    }
-                }
-            }
-        })();
-    </script>
+    <script src="{% static 'js/scripts.js' %}" defer></script>
 </body>
 </html>
