@@ -1,0 +1,143 @@
+{% extends 'base.html' %}
+{% load static %}
+
+{% block content %}
+      <section class="calculator container">
+      <div class="calculator__buttons">
+        <button id="open-deposit-calculator" class="calculator__button selected">Вклад</button>
+        <button id="open-credit-calculator" class="calculator__button">Кредит</button>
+        <button id="open-mortgage-calculator" class="calculator__button">Ипотека</button>
+        <div id="border" class="border"></div>
+      </div>
+      <div id="deposit-calc" class="deposit container">
+        <div class="mb-4">
+          <h1>Калькулятор вклада</h1>
+          <label for="deposit">Сумма вклада: <span id="deposit-value" style="color: #152D47;">300 000 ₽</span></label>
+          <input id="deposit" type="range" min="10000" max="30000000" step="1000" value="300000">
+          <label>Выберите срок:</label>
+          <div class="buttons">
+            <button data-months="3" class="duration-btn">3 месяца</button>
+            <button data-months="6" class="duration-btn active">6 месяцев</button>
+            <button data-months="9" class="duration-btn">9 месяцев</button>
+            <button data-months="12" class="duration-btn">1 год</button>
+            <button data-months="18" class="duration-btn">1,5 года</button>
+            <button data-months="24" class="duration-btn">2 года</button>
+            <button data-months="36" class="duration-btn">3 года</button>
+          </div>
+        </div>
+        <div class="offer">
+          {% comment %} <h2 style="margin-bottom: 12px;">Наше предложение</h2> {% endcomment %}
+          <div>
+            <span>Процентная ставка:</span>
+            <span id="interest-rate">21.0%</span>
+          </div>
+          <div>
+            <span>Сумма в конце срока:</span>
+            <span id="final-amount">333 000 ₽</span>
+          </div>
+          <div>
+            <span>Доход по вкладу:</span>
+            <span id="profit">33 000 ₽</span>
+          </div>
+        </div>
+        {% comment %} <button class="submit">Открыть вклад</button> {% endcomment %}
+      </div>
+
+      <div id="credit" class="loan-container container">
+        <h1 class="loan-title">Кредитный калькулятор</h1>
+        <div class="loan-input-group">
+          <label for="credit-amount" class="loan-label">Сумма кредита: <span id="credit-amount-value" style="color: #152D47;">1 000 000 ₽</span></label>
+          <input id="credit-amount" type="range" class="loan-slider" min="30000" max="15000000" step="1000" value="1000000">
+          <div class="loan-output">
+            <span>30 тыс.</span>
+            <span>15 млн</span>
+          </div>
+        </div>
+        <div class="loan-input-group">
+          <label for="credit-term" class="loan-label">Срок кредита: <span id="credit-term-value" style="color: #152D47;">8 месяцев</span></label>
+          <input id="credit-term" type="range" class="loan-slider" min="1" max="180" step="1" value="8">
+          <div class="loan-output">
+            <span>1 месяц</span>
+            <span>15 лет</span>
+          </div>
+        </div>
+        <div class="loan-offer">
+          {% comment %} <h2 style="margin-bottom: 12px;">Наше предложение</h2> {% endcomment %}
+          <div>
+            <span>Процентная ставка:</span>
+            <span id="credit-interest-rate">29.99%</span>
+          </div>
+          <div>
+            <span>Ежемесячный платеж:</span>
+            <span id="credit-monthly-payment">18 800 ₽</span>
+          </div>
+          <div>
+            <span>Вам понадобится:</span>
+            <span>
+              <span>📄 Паспорт</span>
+              <span>🏠 Залог</span>
+            </span>
+          </div>
+        </div>
+        {% comment %} <button class="loan-submit">Получить деньги</button> {% endcomment %}
+      </div>
+
+      <div id="mortage-calc" class="mortgage-widget container">
+        <h1 class="widget-title">Ипотечный калькулятор</h1>
+        <div class="widget-input-group">
+          <label for="property-cost" class="widget-label">Стоимость недвижимости: <span id="property-cost-value" style="color: #152D47;">1 200 000 ₽</span></label>
+          <input id="property-cost" type="range" class="widget-slider" min="1200000" max="44400000" step="10000" value="1200000">
+          <div class="widget-output">
+            <span>1,2 млн</span>
+            <span>44,4 млн</span>
+          </div>
+        </div>
+        <div class="widget-input-group">
+          <label for="down-payment" class="widget-label">Первоначальный взнос: <span id="down-payment-value" style="color: #152D47;">240 000 ₽</span></label>
+          <input id="down-payment" type="range" class="widget-slider" min="240000" max="1200000" step="10000" value="240000">
+          <div class="widget-output">
+            <span>240 тыс.</span>
+            <span>1,2 млн</span>
+          </div>
+        </div>
+        <div class="widget-input-group">
+          <label for="loan-duration" class="widget-label">Срок ипотеки: <span id="loan-duration-value" style="color: #152D47;">15 лет</span></label>
+          <input id="loan-duration" type="range" class="widget-slider" min="3" max="30" step="1" value="15">
+          <div class="widget-output">
+            <span>3 года</span>
+            <span>30 лет</span>
+          </div>
+        </div>
+        <div class="widget-summary">
+          {% comment %} <h2 style="margin-bottom: 12px;">Наше предложение</h2> {% endcomment %}
+          <div>
+            <span>Процентная ставка:</span>
+            <span id="mortgage-interest-rate">19.0%</span>
+          </div>
+          <div>
+            <span>Ежемесячный платеж:</span>
+            <span id="monthly-cost">61 627 ₽</span>
+          </div>
+          <div>
+            <span>Сумма кредита:</span>
+            <span id="credit-amount">960 000 ₽</span>
+          </div>
+          <div>
+            <span>Срок:</span>
+            <span id="credit-duration">15 лет</span>
+          </div>
+        </div>
+        {% comment %} <button class="widget-submit">Заполнить заявку</button> {% endcomment %}
+      </div>
+      </section>
+{% endblock %}
+
+{% block scripts %}
+    <script type="module" src="{% static 'js/indexAnimation.js' %}"></script>
+    <script src="{% static 'js/calculator.js' %}"></script>
+    <script src="{% static 'js/script.js' %}"></script>
+{% endblock %}
+
+{% block footer %}
+    <!-- Оставляем пустым, чтобы футер не отображался -->
+{% endblock %}
