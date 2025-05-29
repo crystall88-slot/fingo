@@ -48,5 +48,4 @@ dist/
 *.pyd
 *.so
 
-# Убедимся, что db.sqlite3 не игнорируется
-!db.sqlite3
+db.sqlite3
