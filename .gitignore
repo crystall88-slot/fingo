@@ -32,7 +32,7 @@ settings.py.local
 # Игнорировать файлы базы данных SQLite, кроме db.sqlite3
 *.sqlite
 *.db
-!db.sqlite3
+db.sqlite3
 
 # Игнорировать файлы сборки и зависимостей (если применимо)
 build/
